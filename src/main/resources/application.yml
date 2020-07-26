@@ -1,0 +1,16 @@
+micronaut:
+  application:
+    name: myProject
+---
+application:
+  identity:
+    url: http://localhost:${micronaut.server.port}
+    clientid: clientid
+    username: username
+    password: password
+    maxTimeForCall: 50
+    timeBetweenRetries: 500
+---
+micronaut:
+  server:
+    port: ${random.port}
