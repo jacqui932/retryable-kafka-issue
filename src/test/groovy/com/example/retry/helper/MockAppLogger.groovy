@@ -42,35 +42,12 @@ class MockAppLogger extends AppLogger {
         this.logMessages.any { it.isError(exceptionType) }
     }
 
-    boolean containsError(Class<? extends Exception> exceptionType, String traceId) {
-        containsErrorXTimes(exceptionType, traceId, 1)
-    }
-
-    boolean containsErrorXTimes(Class<? extends Exception> exceptionType, String traceId, int times) {
-        def logMessage = this.logMessages.findAll { it.isError(exceptionType) && it.traceIdContains(traceId) }
-        return logMessage.size() == times
-    }
-
-    boolean contains ( Map context, String message) {
-        this.logMessages.any { it.contains(context, message) }
-    }
-
     Collection<LogMessage> findAll(Map context, String message) {
         this.logMessages.findAll { it.contains(context, message) }
     }
 
     boolean containsLog(String message) {
         this.logMessages.findAll { it.isMessage(message) }.size() == 1
-    }
-
-    boolean containsLog(String message, String traceId) {
-        def logMessage = this.logMessages.findAll { it.isMessage(message) && it.traceIdContains(traceId) }
-        assert logMessage.size() == 1
-        return true
-    }
-
-    boolean clear() {
-        this.logMessages.clear()
     }
 
     @Override

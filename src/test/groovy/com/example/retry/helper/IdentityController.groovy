@@ -47,8 +47,4 @@ class IdentityController {
     def addGenerateAccessTokenResponse(ResponseStatus response) {
         generateAccessToken.addResponse(response)
     }
-
-    def clear() {
-        generateAccessToken.clear()
-    }
 }

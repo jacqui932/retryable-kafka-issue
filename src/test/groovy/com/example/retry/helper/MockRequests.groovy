@@ -23,13 +23,6 @@ class MockRequests<T extends MockRequest, U> {
         nextResponse(request)
     }
 
-    void addResponse(T request, ResponseStatus response) {
-        if (!requestSpecificResponses.containsKey(request)) {
-            requestSpecificResponses.put(request, [] as Queue<U>)
-        }
-        requestSpecificResponses.get(request).add(response)
-    }
-
     void addResponse(ResponseStatus response) {
         responses.add(response)
     }
@@ -54,18 +47,5 @@ class MockRequests<T extends MockRequest, U> {
             return serverError.get()
         }
         return clientError.get()
-    }
-
-    void clear() {
-        requests.clear()
-        responses.clear()
-    }
-
-    boolean calledWithXTimes(T request, int times) {
-        requests.size() > 0 && requests.findAll { it.matches(request) }.size() == times
-    }
-
-    boolean notCalled() {
-        requests.size() == 0
     }
 }
