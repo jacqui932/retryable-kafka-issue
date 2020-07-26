@@ -1,1 +1,0 @@
-{"@timestamp":"2020-07-26T16:21:22.441+01:00","logger_name":"io.micronaut.context.env.DefaultEnvironment","level":"INFO","level_value":20000,"message":"Established active environments: [test]","thread_name":"Test worker"}
