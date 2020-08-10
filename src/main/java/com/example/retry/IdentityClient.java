@@ -7,7 +7,6 @@ import io.micronaut.http.client.annotation.Client;
 import io.reactivex.Single;
 
 @Client("${application.identity.url}")
-@Header(name = "Content-Type", value = "application/json")
 public interface IdentityClient {
 
     @Post("/api/auth/oauth/v2/token")
